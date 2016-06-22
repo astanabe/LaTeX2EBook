@@ -17,6 +17,9 @@ while (<>) {
 	elsif (/\\documentclass/ && /jsbook/) {
 		s/jsbook/book/;
 		s/titlepage,//;
+		s/,titlepage//;
+		s/english,//;
+		s/,english//;
 	}
 	elsif (/\\bibliographystyle/ && /jecon/) {
 		s/jecon/alphanat/;
