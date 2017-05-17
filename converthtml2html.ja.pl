@@ -23,6 +23,20 @@ while (<>) {
 		$switch = 0;
 		s/^<\/span>/<\/p>/;
 	}
+	if (/<div class="ltx_date ltx_role_creation">/) {
+		s/January (\d+), (\d+)/$2年1月$1日/;
+		s/February (\d+), (\d+)/$2年2月$1日/;
+		s/March (\d+), (\d+)/$2年3月$1日/;
+		s/April (\d+), (\d+)/$2年4月$1日/;
+		s/May (\d+), (\d+)/$2年5月$1日/;
+		s/June (\d+), (\d+)/$2年6月$1日/;
+		s/July (\d+), (\d+)/$2年7月$1日/;
+		s/August (\d+), (\d+)/$2年8月$1日/;
+		s/September (\d+), (\d+)/$2年9月$1日/;
+		s/October (\d+), (\d+)/$2年10月$1日/;
+		s/November (\d+), (\d+)/$2年11月$1日/;
+		s/December (\d+), (\d+)/$2年12月$1日/;
+	}
 	s/(<cite class="ltx_cite">)(.+?)(<a href="\#bib\.bib\d+" title="" class="ltx_ref">)(.+?)(<\/a>)(.+?)(<\/cite>)/$1$3$2$4$6$5$7/g;
 	s/<li id="bib.bib\d+" class="ltx_bibitem"/$& style="padding:0em 0em 0.2em 0em;"/;
 	s/<ul class="ltx_biblist"/$& style="padding:0em 0em 0em 1em;text-indent:-1em;"/;
@@ -32,5 +46,7 @@ while (<>) {
 	s/<dd class="ltx_item">/<dd>/g;
 	s/Chapter\s(\d+)/第$1章/g;
 	s/Part\s(\d+)/第$1部/g;
+	s/ltx_inline-block ltx_framed_rectangle/ltx_p ltx_framed_rectangle/g;
+	s/font-size:\d+\%/font-size:100\%/g;
 	print;
 }
