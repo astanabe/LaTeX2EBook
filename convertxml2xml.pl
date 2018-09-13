@@ -3,6 +3,9 @@ use open ':encoding(utf8)';
 use open ':std';
 my $switch;
 while (<>) {
+	#if (/<itemize class=\".+?\"/) {
+	#	s/ class=\".+?\"//;
+	#}
 	if (/<bibitem xml:id="bib.bib1">/) {
 		$switch = 1;
 	}
