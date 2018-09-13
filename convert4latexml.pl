@@ -53,7 +53,6 @@ while (<>) {
 		my $switch2;
 		open(BIB, "< $bibfile");
 		while (my $line = readline(BIB)) {
-			$line =~ s/(\\href\{https\:\/\/doi\.org\/[^\{\}]*)\\\_([^\{\}]*})/$1\_$2/g;
 			if ($line =~ /\\begin\{thebibliography\}/) {
 				$switch2 = 1;
 			}
