@@ -15,14 +15,14 @@ while (<>) {
 		next;
 	}
 	elsif (/\\documentclass/ && /jsbook/) {
-		s/jsbook[a-zA-Z0-9]+/book/;
+		s/jsbook[a-zA-Z0-9]*/book/;
 		s/titlepage,//;
 		s/,titlepage//;
 		s/english,//;
 		s/,english//;
 	}
 	elsif (/\\documentclass/ && /jsarticle/) {
-		s/jsarticle[a-zA-Z0-9]+/article/;
+		s/jsarticle[a-zA-Z0-9]*/article/;
 		s/titlepage,//;
 		s/,titlepage//;
 		s/english,//;
@@ -31,9 +31,15 @@ while (<>) {
 	elsif (/\\bibliographystyle/ && /jecon/) {
 		s/jecon/alphanat/;
 	}
-	elsif (/\\includegraphics\{/) {
-		s/\\includegraphics\{/\\includegraphics[scale=2.0]{/;
+	elsif (/\\usepackage/ && /pxjahyper/) {
+		s/\\usepackage\{.+\}//;
 	}
+	elsif (/\\usepackage/ && /pxcjkcat/) {
+		s/\\usepackage\{.+\}//;
+	}
+	#elsif (/\\includegraphics\{/) {
+	#	s/\\includegraphics\{/\\includegraphics[scale=2.0]{/;
+	#}
 	#elsif (/\\title\{/) {
 	#	s/\\title\{.+\}//;
 	#}
