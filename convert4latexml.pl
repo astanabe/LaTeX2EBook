@@ -16,26 +16,44 @@ while (<>) {
 	}
 	elsif (/\\documentclass/ && /jsbook/) {
 		s/jsbook[a-zA-Z0-9]*/book/;
-		s/titlepage,//;
-		s/,titlepage//;
-		s/english,//;
-		s/,english//;
+		s/titlepage, *//;
+		s/english, *//;
+		s/uplatex, *//;
+		s/, *titlepage//;
+		s/, *english//;
+		s/, *uplatex//;
+		s/\[ *titlepage *\]//;
+		s/\[ *english *\]//;
+		s/\[ *uplatex *\]//;
+		s/\[ *\]//;
 	}
 	elsif (/\\documentclass/ && /jsarticle/) {
 		s/jsarticle[a-zA-Z0-9]*/article/;
-		s/titlepage,//;
-		s/,titlepage//;
-		s/english,//;
-		s/,english//;
+		s/titlepage, *//;
+		s/english, *//;
+		s/uplatex, *//;
+		s/, *titlepage//;
+		s/, *english//;
+		s/, *uplatex//;
+		s/\[ *titlepage *\]//;
+		s/\[ *english *\]//;
+		s/\[ *uplatex *\]//;
+		s/\[ *\]//;
+	}
+	elsif (/\\usepackage/ && /xcolor/) {
+		s/dvipdfmx, *//;
+		s/hiresbb, *//;
+		s/, *dvipdfmx//;
+		s/, *hiresbb//;
+		s/\[ *dvipdfmx *\]//;
+		s/\[ *hiresbb *\]//;
+		s/\[ *\]//;
 	}
 	elsif (/\\bibliographystyle/ && /jecon/) {
 		s/jecon/alphanat/;
 	}
-	elsif (/\\usepackage/ && /pxjahyper/) {
-		s/\\usepackage\{.+\}//;
-	}
-	elsif (/\\usepackage/ && /pxcjkcat/) {
-		s/\\usepackage\{.+\}//;
+	elsif (/\\usepackage/ && /(?:pxchfon|pxjahyper|pxcjkcat|otf)/) {
+		s/\\usepackage.*\{.+\}//;
 	}
 	#elsif (/\\includegraphics\{/) {
 	#	s/\\includegraphics\{/\\includegraphics[scale=2.0]{/;
