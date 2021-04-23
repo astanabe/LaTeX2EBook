@@ -2,7 +2,7 @@
 
 Utility commands for LaTeX/Bibtex/LaTeXML ebook publishing.
 
-##How to use
+## How to use
 
 1. prepare latex and bibtex sources using utf8
 2. perform latex
